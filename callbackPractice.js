@@ -22,7 +22,9 @@ and what you should write is the sayHi function that makes the code above work,
 
 // 1. Write a function called first that returns the first item of the array using a callback function
 
-  // Code Here
+function first (arr, cb) {
+  return cb(arr[0]);
+}
 
   
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -34,7 +36,9 @@ first(names, function(firstName){
 
 // 2. Write a function called last which returns the last item of the array using a callback function.
 
-  //Code Here
+function last(arr, cb) {
+  return cb(arr.pop());
+}
 
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -44,7 +48,9 @@ last(names, function(lastName){
 
 // 3. Write a function called multiply that multiplies two numbers using a callback function.
 
-  //Code Here
+function multiply(a, b, cb) {
+  return cb(a * b);
+}
 
 
 multiply(4, 3, function(answer){
@@ -56,7 +62,12 @@ multiply(4, 3, function(answer){
 // 4. Write a function called contains that checks if a name exists in an array. 
 // If it does, return true using the callback, if not return false.
 
-  //Code Here 
+function contains(arr, str, cb) {
+  if(arr.indexOf(str) >= 0) {
+    return cb(true);
+  }
+  return cb(false);
+}
 
 contains(names, 'Colt', function(result){
   if(result === true){
