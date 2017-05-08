@@ -82,7 +82,12 @@ contains(names, 'Colt', function(result){
 // 5. Write a function called uniq that takes the names array and removes all duplicates and returns 
 // the callback function with the array of unique names.
 
-    //Code Here
+function uniq(arr, cb) {
+  var newArr = arr.filter(function(name, index, array) {
+    return array.indexOf(name) == index; 
+  });
+    cb(newArr)
+}
 
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -92,7 +97,10 @@ uniq(names, function(uniqArr){
 // 6. Write a function called each that takes in an array of names. For each item, use a callback 
 // function to return the indices and item.
 
-    //Code Here 
+function each(arr, cb) {
+  for (var i = 0; i < arr.length; i++)
+  cb(arr[i], i);
+}
 
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -103,29 +111,43 @@ each(names, function(item, indice){
 // 7. Write a function called getUserById that looks at the array of user objects (users) and searches for a user by ID 
 // and returns that user.
 
- //Code Here
+//  function getUserById(arr, idStr, cb) {
+//   for (var i = 0; i < arr.length; i++); {
+//     if(arr[i].id === idStr) {
+//       return cb(arr[i]);
+//     }
+//   }
+// }
 
-var users = [
-  {
-    id: '12d',
-    email: 'tyler@gmail.com',
-    name: 'Tyler',
-    address: '167 East 500 North'
-  },
-  {
-    id: '15a',
-    email: 'cahlan@gmail.com',
-    name: 'Cahlan',
-    address: '135 East 320 North'
-  },
-  {
-    id: '16t',
-    email: 'ryan@gmail.com',
-    name: 'Ryan',
-    address: '192 East 32 North'
-  },
-];
+function getUserById(array, str, callback){
+        for (var i = 0; i < array.length; i++) {
+          if(array[i].id === str){
+            callback(array[i]);
+          }
+        }
+      }
 
-getUserById(users, '16t', function(user){
-  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
-});
+// var users = [
+//   {
+//     id: '12d',
+//     email: 'tyler@gmail.com',
+//     name: 'Tyler',
+//     address: '167 East 500 North'
+//   },
+//   {
+//     id: '15a',
+//     email: 'cahlan@gmail.com',
+//     name: 'Cahlan',
+//     address: '135 East 320 North'
+//   },
+//   {
+//     id: '16t',
+//     email: 'ryan@gmail.com',
+//     name: 'Ryan',
+//     address: '192 East 32 North'
+//   },
+// ];
+
+// getUserById(users, '16t', function(user){
+//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
+// });
